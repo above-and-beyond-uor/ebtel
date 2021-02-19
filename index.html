@@ -16,6 +16,8 @@
 </table>
 <button type="button" onclick="myFunction()">Term</button>
 <button type="button" onclick="myFunction2()">Definition</button>
+<button type="button" onclick="myFunction3()">Hide</button>
+<button type="button" onclick="myFunction4()">Reset</button>
 
 <script src="jquery-3.5.1.min.js"></script>
 
@@ -46,6 +48,13 @@ function myFunction2() {
   var this_card = card_obj["card_def"][current_card];
   $(".flashcard_box").html(this_card);
   current_card++
+}
+function myFunction3(){
+  $(".flashcard_box").html(" ")
+}
+function myFunction4(){
+  $(".flashcard_box").html(" ")
+  current_card = 0;
 }
 
 </script>
