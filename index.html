@@ -1,27 +1,31 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 <style>
 .flashcard_box{
-  background-color:orange;
+  background-color:teal;
   width: 400px;
   height: 250px;
   text-align: center;
   line-height: 200px;
   font-size: 25px;
+  text:"please press term";
 }
 </style>
-<h1>Flashcards<h1>
+<h1 class="display-6">Flashcards</h1>
 <table>
   <tr>
     <td><div class="flashcard_box" id="box_0"></div></td>
   </tr>
 </table>
-<button type="button" onclick="myFunction()">Term</button>
-<button type="button" onclick="myFunction2()">Definition</button>
-<button type="button" onclick="myFunction3()">Hide</button>
-<button type="button" onclick="myFunction4()">Reset</button>
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" onclick="myFunction()" class="btn btn-primary">Term</button>
+  <button type="button" onclick="myFunction2()" class="btn btn-primary">Definition</button>
+  <button type="button" onclick="myFunction3()"class="btn btn-primary">Hide</button>
+  <button type="button" onclick="myFunction4()"class="btn btn-primary">Reset</button>
+</div>
 
 <script src="jquery-3.5.1.min.js"></script>
 
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 <script>
 // aim - load question 0
 // have 2 buttons: term, definition
@@ -37,7 +41,7 @@ card_obj = { // this creates an object with 2 arrays for term and definition res
   visible_letters: [],
   selected_boxes: [],
 };
-var i;
+var i = 0;
 var current_card = 0; // this acts as a placeholder for the current flashcard
 
 function myFunction() {
