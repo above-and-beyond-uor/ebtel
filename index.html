@@ -12,8 +12,16 @@
 <h1 class="display-6">Flashcards</h1>
 <table>
   <tr>
-    <td rowspan="2" colspan="2" id="card1"></td>
-    <td id="card2"></td>
+    <!--
+      <td rowspan="2" colspan="2" id="card1"></td>
+    -->
+
+    <td id="card_list"></td>
+
+
+    <!--
+      <td id="card2"></td>
+    -->
     <td><div class="flashcard_box" id="box_0"></div></td>
   </tr>
 </table>
@@ -53,8 +61,16 @@ var i = 0;
 var current_card = 0; // this acts as a placeholder for the current flashcard
 var no_of_cards = cards_array.length;
 
-document.getElementById("card1").innerHTML = cards_array[0]["term"];
-document.getElementById("card2").innerHTML = cards_array[1]["term"];
+var terms = cards_array.map(function(card){
+  return "<button>" + card.term + "</button><br>";
+});
+
+
+
+$("#card_list").html(terms);
+
+//document.getElementById("card_list").innerHTML = cards_array[0]["term"];
+//document.getElementById("card2").innerHTML = cards_array[1]["term"];
 
 function myFunction() {
   var this_card = cards_array[current_card]["term"];
