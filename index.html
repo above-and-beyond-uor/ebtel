@@ -53,8 +53,8 @@ var c = 0;
 var current_card = 0; // this acts as a placeholder for the current flashcard
 var no_of_cards = cards_array.length;
 
-var terms = cards_array.map(function(card){
-  return "<button onClick={myFunction5(this.id)} id=c>" + card.term + "</button><br>";
+var terms = cards_array.map(function(card, index){
+  return "<button onClick='myFunction5(this.id)' id='button_" + index + "'>" + card.term + "</button><br>";
 });
 
 $("#card_list").html(terms);
