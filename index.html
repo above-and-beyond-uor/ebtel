@@ -17,9 +17,9 @@
   </tr>
 </table>
 <div class="btn-group" role="group" aria-label="Basic example">
-  <button type="button" onclick="myFunction()" class="btn btn-primary">Term</button>
-  <button type="button" onclick="myFunction2()" class="btn btn-primary">Definition</button>
-  <button type="button" onclick="myFunction3()"class="btn btn-primary">Hide</button>
+  <button type="button" onclick="myFunction()" class="btn btn-primary">Front</button>
+  <button type="button" onclick="myFunction2()" class="btn btn-primary">Back</button>
+  <button type="button" onclick="myFunction3()"class="btn btn-primary">Hide Card</button>
   <button type="button" onclick="myFunction4()"class="btn btn-primary">Reset</button>
 </div>
 
@@ -28,28 +28,35 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 <script>
 // aim - load question 0
-// have 2 buttons: term, definition
-card_obj = { // this creates an object with 2 arrays for term and definition respectively
-  card_term : [
-    "Term",   // card 0
-    "Term 2"
-  ],
-  card_def : [
-    "Definition", // card 0
-    "Definition 2"
-  ],
-  visible_letters: [],
-  selected_boxes: [],
-};
+// have 2 buttons: term, Definition
+
+var cards_array = [
+  {
+    term: "term 1", // this is card 0
+    definition: "definition 1"
+    //img:
+  },
+  {
+    term: "term 2",
+    definition: "definition 2"
+    //img:
+  },
+  {
+    term: "term 3",
+    definition: "definition 3"
+    //img:
+  }
+];
+
 var i = 0;
 var current_card = 0; // this acts as a placeholder for the current flashcard
 
 function myFunction() {
-  var this_card = card_obj["card_term"][current_card];
+  var this_card = cards_array[current_card]["term"];
   $(".flashcard_box").html(this_card);
 }
 function myFunction2() {
-  var this_card = card_obj["card_def"][current_card];
+  var this_card = cards_array[current_card]["definition"];
   $(".flashcard_box").html(this_card);
   current_card++
 }
