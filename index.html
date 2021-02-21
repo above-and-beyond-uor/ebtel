@@ -7,29 +7,32 @@
   text-align: center;
   line-height: 200px;
   font-size: 25px;
+  border-radius: 15px;
 }
 </style>
-<h1 class="display-6">Flashcards</h1>
+
+<body>
+<div class="container">
+  <h1 class="display-6">Perception and Neuroscience Flashcards</h1>
+  <p class="text-left">Select a flashcard from the panel on the left and use the controls below.</p>
+</div>
+</body>
 <table>
   <tr>
     <td id="card_list"></td>
     <td><div class="flashcard_box" id="box_0"></div></td>
   </tr>
+  <tr>
+    <td> </td>
+    <td>Card Controls:  <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" onclick="frontFlip()" class="btn btn-primary">Front</button>
+      <button type="button" onclick="backFlip()" class="btn btn-primary">Back</button>
+      <button type="button" onclick="hideMe()"class="btn btn-primary">Hide Card</button>
+    </div></td>
 </table>
-<div class="btn-group" role="group" aria-label="Basic example">
-  <button type="button" onclick="myFunction()" class="btn btn-primary">Front</button>
-  <button type="button" onclick="myFunction2()" class="btn btn-primary">Back</button>
-  <button type="button" onclick="myFunction3()"class="btn btn-primary">Hide Card</button>
-  <button type="button" onclick="myFunction4()"class="btn btn-primary">Reset</button>
-</div>
-
 <script src="jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-
 <script>
-// aim - load question 0
-// have 2 buttons: term, Definition
-
 var cards_array = [
   {
     term: "term 1", // this is card 0
@@ -47,40 +50,28 @@ var cards_array = [
     //img:
   }
 ];
-
-var i = 0;
-var c = 0;
 var current_card = 0; // this acts as a placeholder for the current flashcard
 var no_of_cards = cards_array.length;
-
 var terms = cards_array.map(function(card, index){
-  return "<button onClick='myFunction5(this.id)' id='button_" + index + "'>" + card.term + "</button><br>";
+  return "<button onClick='loadCard(this.id)' class='btn btn-primary' data-bs-toggle='button' autocomplete='off' id=" + index + ">" + card.term + "</button><br>";
 });
-
 $("#card_list").html(terms);
-
-
-//document.getElementById("c").innerHTML = cards_array[current_card]["term"];
-//document.getElementById("card2").innerHTML = cards_array[1]["term"];
-
-function myFunction() {
-  var this_card = cards_array[current_card]["term"];
+function loadCard(clicked_id) {
+  var this_card = cards_array[clicked_id]["term"];
   $(".flashcard_box").html(this_card);
-}
-function myFunction2() {
+  current_card = clicked_id;
+  }
+
+function backFlip() {
   var this_card = cards_array[current_card]["definition"];
   $(".flashcard_box").html(this_card);
-  current_card++
 }
-function myFunction3(){
+function hideMe(){
   $(".flashcard_box").html(" ")
 }
-function myFunction4(){
-  $(".flashcard_box").html(" ")
-  current_card = 0;
-}
-function myFunction5(clicked_id){
-  alert(clicked_id);
+function frontFlip(){
+  var this_card = cards_array[current_card]["term"];
+  $(".flashcard_box").html(this_card);
 }
 
 </script>
