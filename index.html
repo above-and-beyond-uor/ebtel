@@ -14,7 +14,8 @@
 <body>
 <div class="container">
   <h1 class="display-6">Perception and Neuroscience Flashcards</h1>
-  <p class="text-left">Select a flashcard from the panel on the left and use the controls below.</p>
+  <p class="text-left">Select a flashcard from the panel on the left and use the buttons below to flip the card or hide it.</p>
+  <p class="text-left">You will be alerted once 30 minutes have elapsed.</p>
 </div>
 </body>
 <table>
@@ -35,18 +36,18 @@
 <script>
 var cards_array = [
   {
-    term: "term 1", // this is card 0
-    definition: "definition 1"
+    term: "Synaesthesia", // this is card 0
+    definition: "Definition"
     //img:
   },
   {
-    term: "term 2",
-    definition: "definition 2"
+    term: "Term 2",
+    definition: "Definition 2"
     //img:
   },
   {
-    term: "term 3",
-    definition: "definition 3"
+    term: "Term 3",
+    definition: "Definition 3"
     //img:
   }
 ];
@@ -72,6 +73,12 @@ function hideMe(){
 function frontFlip(){
   var this_card = cards_array[current_card]["term"];
   $(".flashcard_box").html(this_card);
+}
+
+window.setTimeout(timesUp(),30000); //1800000ms = 30 mins
+
+function timesUP(){
+  alert("30 minutes have now passed. Please close the page.");
 }
 
 </script>
