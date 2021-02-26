@@ -1,9 +1,9 @@
+<script src="jquery-3.5.1.min.js"></script>
 <p class="text-left">
-  Fill in the blanks using the options in the drop down menu. <br> 1.) The
+  Fill in the blanks using the answers in the drop down menu. <br> 1.) The
   <select id="selectAnswer">
       <option>Choose an answer</option>
-  </select>
-  are at the junction between
+  </select> are at the junction between
   <select id="selectAnswer">
       <option>Choose an answer</option>
   </select> and
@@ -17,13 +17,14 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 <script>
 var select = document.getElementById("selectAnswer");
-var options = ["Golgi tendon organs", "muscles", "tendons", "muscles"];
-for(var i = 0; i < options.length; i++) {
-    var opt = options[i];
+var options1 = ["Golgi tendon organs", "muscles", "tendons", "muscles"];
+for(var i = 0; i < options1.length; i++) {
+    var opt = options1[i];
     var dropDown = document.createElement("option");
     dropDown.textContent = opt;
     dropDown.value = opt;
     select.appendChild(dropDown);
 }
+
 
 </script>
