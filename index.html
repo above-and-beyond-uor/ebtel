@@ -18,7 +18,7 @@
   <p class="text-left">You will be alerted once 30 minutes have elapsed.</p>
 </div>
 </body>
-<table>
+<table id="card_table">
   <tr>
     <td id="card_list"></td>
     <td><div class="flashcard_box" id="box_0"></div></td>
@@ -78,6 +78,7 @@ function frontFlip(){
 window.setTimeout(timesUp, 1800000); //1800000ms = 30 mins
 
 function timesUp(){
+  $("#card_table").hide()
   alert("30 minutes have now passed. Please close the page.");
 }
 
