@@ -15,6 +15,7 @@
   </tr>
 </table>
 
+<div id="sentence_html">
 
 
 
@@ -40,24 +41,44 @@ var allQuestions = [
 
 var allQuestions = [
   {
-    sentence: [{
-      type: "text",
-      content: "The "
-    },{
-      type: "dropdown",
-      content: [
-        "--Please Select--",
-        "Golgi tendon organs",
-        "muscles",
-        "tendons",
-        "muscles"
-      ]
-    }]
+    sentence: [
+      {
+        type: "text",
+        content: "The "
+      },{
+        type: "dropdown",
+        content: [
+          "--Please Select--",
+          "Golgi tendon organs",
+          "muscles",
+          "tendons",
+          "muscles"
+        ]
+      },
+      // next part of the sentence goes here
+    ]
   }
 ];
 
+var this_question = allQuestions[0];
+var question = this_question.sentence.map(function(sentence_part, index){
+  console.dir(sentence_part);
+  if(sentence_part.type == "text"){
+    return sentence_part["content"];
+  } else {
+    return "<select> <option>" + sentence_part.content.join("</option><option>") + "</option> </select><br>";
+  }
+});
+
+$("#sentence_html").html(question.join(""));
+
+
+
+
+
 var question = allQuestions.map(function(card, index){
   if(card.type == "text"){
+    return card["sentence"][content];
     return "allQuestions[sentence][content]";
   } else {
     return "<select> <option>" + card.content + "</option> </select><br>";
