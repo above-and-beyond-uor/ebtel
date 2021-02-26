@@ -1,5 +1,15 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+<script src="jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+
 <style>
+.card_btn{
+  width:100%;
+  margin:1px;
+}
+
 .flashcard_box{
   background-color:teal;
   width: 400px;
@@ -9,30 +19,45 @@
   font-size: 25px;
   border-radius: 15px;
 }
+
+#everything{
+  margin:auto;
+  width:620px;
+  padding:50px;
+  max-height:600px;
+  text-align: right;
+}
 </style>
 
 <body>
-<div class="container">
-  <h1 class="display-6">Perception and Neuroscience Flashcards</h1>
-  <p class="text-left">Select a flashcard from the panel on the left and use the buttons below to flip the card or hide it.</p>
-  <p class="text-left">You will be alerted once 30 minutes have elapsed.</p>
+
+<div id="everything">
+  <h5>Perception and Neuroscience Flashcards</h5>
+  <p class="text-right">Select a flashcard from the panel on the left and use the buttons below to flip the card or hide it.</p>
+  <p class="text-right">You will be alerted once 30 minutes have elapsed.</p>
+  <table id="card_table">
+    <tr>
+      <td id="card_list"></td>
+      <td><div class="flashcard_box" id="box_0"></div></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>
+        <!--
+        Card Controls:  <div class="btn-group" role="group" aria-label="Basic example">
+        -->
+        <button type="button" onclick="frontFlip()" class="btn btn-primary">Front</button>
+        <button type="button" onclick="backFlip()" class="btn btn-primary">Back</button>
+
+        <!--
+        <button type="button" onclick="hideMe()"class="btn btn-primary">Hide Card</button>
+        -->
+      </div>
+    </td>
+  </table>
 </div>
 </body>
-<table id="card_table">
-  <tr>
-    <td id="card_list"></td>
-    <td><div class="flashcard_box" id="box_0"></div></td>
-  </tr>
-  <tr>
-    <td> </td>
-    <td>Card Controls:  <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" onclick="frontFlip()" class="btn btn-primary">Front</button>
-      <button type="button" onclick="backFlip()" class="btn btn-primary">Back</button>
-      <button type="button" onclick="hideMe()"class="btn btn-primary">Hide Card</button>
-    </div></td>
-</table>
-<script src="jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
 <script>
 var cards_array = [
   {
@@ -54,7 +79,7 @@ var cards_array = [
 var current_card = 0; // this acts as a placeholder for the current flashcard
 var no_of_cards = cards_array.length;
 var terms = cards_array.map(function(card, index){
-  return "<button onClick='loadCard(this.id)' class='btn btn-primary' data-bs-toggle='button' autocomplete='off' id=" + index + ">" + card.term + "</button><br>";
+  return "<button onClick='loadCard(this.id)' class='btn btn-primary card_btn' data-bs-toggle='button' autocomplete='off' id=" + index + ">" + card.term + "</button><br>";
 });
 $("#card_list").html(terms);
 function loadCard(clicked_id) {
